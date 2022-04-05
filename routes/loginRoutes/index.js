@@ -2,7 +2,6 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const validateEmailAndPass = require('../../middleware/validateEmailAndPass');
 const Users = require('../../models/users');
-const userExist = require('../../middleware/userExist');
 const generateRandomToken = require('../../middleware/generateRandomToken');
 const router = express.Router();
 
