@@ -8,7 +8,7 @@ module.exports = (req,res,next)=>{
             res.status(200).json({ 
                 data: {
                     status:false,
-                    message: 'user exist.Try another email!'
+                    message: 'User exist.Try another email!'
                 }
             });
         }else{
