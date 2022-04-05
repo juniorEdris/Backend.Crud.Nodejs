@@ -11,6 +11,7 @@ const PORT = process.env.PORT_NUMBER || 5000;
 
 // import all routes
 const registerRoute = require('./routes/registerRoutes');
+const loginRoute = require('./routes/loginRoutes');
 const { urlencoded } = require('body-parser');
 
 // Allow cross-origin request
@@ -22,6 +23,7 @@ app.use(urlencoded({ extended: false }));
 // End points
 
 app.use('/', registerRoute);
+app.use('/', loginRoute);
 
 app.listen(PORT,()=>{
     console.log(`Server started at localhost:${PORT}`);
