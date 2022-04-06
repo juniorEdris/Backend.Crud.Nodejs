@@ -1,10 +1,12 @@
+const Users = require('../models/users');
 const {expect} = require('chai');
+const CreateUser = require('./CreateUser');
 
 describe('Register as an user', function(){
-    it('should get an email', function(){
-        expect('ragib@email.com').to.be.a('email');
-    });
-    it('should get a password', function(){
-        expect('ragib@email.com').to.be.a('string');
+    it('should register an user', function(done){
+       const response = CreateUser({email: "ragib@gain.media", password: "123456", accessToken: "frtehEEdafgebbga74YhrtI"});
+       if (response) {
+           done();
+       };
     });
 });

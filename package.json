@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "nodemon app.js",
-    "test": "mocha test",
+    "test": "mocha --recursive --exit",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
