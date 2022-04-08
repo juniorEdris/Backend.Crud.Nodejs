@@ -1,10 +1,18 @@
 const express = require('express');
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv');
 const cors = require('cors');
+
+dotenv.config();
 
 // Database import
 const connectToDB = require('./config/db');
-connectToDB();
+
+let mongodbname = process.env.MONGO_URL_DATABASE_NAME
+if(process.env.NODE_ENV === 'test'){
+    mongodbname = process.env.MONGO_TEST_DATABASE_NAME
+};
+
+connectToDB(mongodbname);
 
 const app = express();
 const PORT = process.env.PORT_NUMBER || 5000;
@@ -43,6 +51,9 @@ app.use('/', deleteMultipleProductRoute);
 
 app.listen(PORT,()=>{
     console.log(`Server started at localhost:${PORT}`);
+    if(process.env.NODE_ENV === 'test'){
+        console.log(`Connected to testcase database name = ${process.env.MONGO_TEST_DATABASE_NAME}.`);
+    };
 });
 
 module.exports = app;
