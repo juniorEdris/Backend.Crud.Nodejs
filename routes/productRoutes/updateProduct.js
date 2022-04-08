@@ -5,6 +5,7 @@ const router = express.Router();
 module.exports = router.post('/api/update-single-product/:_id', async (req, res) =>{
     const { _id } = req.params;
     const { name,status,price,available_from,category_id } = req.body;
+    console.log(available_from);
 
     await Product.updateOne({_id}, { name,status,price,available_from,category_id })
     .then(async (data)=>{

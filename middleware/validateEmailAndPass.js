@@ -2,7 +2,7 @@ module.exports = (req,res,next)=>{
     const { email, password } = req.body;
     if(!email || !password){
         res.status(200).json({
-            message: 'Invalid Credentials!',
+            message: 'Provide valid email and password!',
             status: false
         });
     }else{

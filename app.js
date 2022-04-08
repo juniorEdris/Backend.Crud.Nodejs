@@ -44,3 +44,5 @@ app.use('/', deleteMultipleProductRoute);
 app.listen(PORT,()=>{
     console.log(`Server started at localhost:${PORT}`);
 });
+
+module.exports = app;

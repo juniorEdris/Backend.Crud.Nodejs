@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-module.exports = mongoose.model('Users', mongoose.Schema({
+module.exports = mongoose.model('User', mongoose.Schema({
     email: {
         type:String,
         required: [true, 'Please provide an email']

@@ -20,8 +20,7 @@ module.exports = router.post('/api/register', validateEmailAndPass,userExist, ge
         });
     })
     .catch(error => {
-        console.log({error});
-        res.status(200).json({ 
+        res.status(406).json({ 
             data: {
                 error,
                 status:false,

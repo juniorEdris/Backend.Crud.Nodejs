@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+// mongoose.Promise = global.Promise;
 
 const mongourl = 'mongodb+srv://jr_edris:KLSPZQE0kKAXpDG9@test-project.s0vrs.mongodb.net/crudapp?retryWrites=true&w=majority';
 

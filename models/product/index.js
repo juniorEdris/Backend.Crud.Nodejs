@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-module.exports = mongoose.model('Products', mongoose.Schema({
+module.exports = mongoose.model('Product', mongoose.Schema({
     name: {
         type:String,
         required: [true, 'Please provide name']
@@ -10,7 +10,7 @@ module.exports = mongoose.model('Products', mongoose.Schema({
         required: [true, 'Please provide product price']
     },
     status:  {
-        type:Boolean,
+        type:String,
         required: [true, 'Please provide a status']
     },
     available_since:  {
