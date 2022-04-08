@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "nodemon app.js",
-    "test": "cross-env NODE_ENV=test mocha ./test/*.js --reporter spec --exit",
+    "test": "cross-env NODE_ENV=test mocha ./test/*.js --reporter spec --timeout 10000 --exit",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
