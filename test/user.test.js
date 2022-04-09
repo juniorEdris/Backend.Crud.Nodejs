@@ -37,7 +37,6 @@ describe('proccessing create user', () =>{
     
     it('should return email, hashed password and accessToken after login', async () => {
         const res = await seedUserForLoginTest(testUser);
-        console.log(res);
         expect(res).to.be.an('object');
         expect(res.email).to.be.eq('testcasetry@mail.com');
         expect(res.email).to.be.a('string');
