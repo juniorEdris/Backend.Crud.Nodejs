@@ -19,4 +19,10 @@ module.exports = router.get('/api/get-all-products', async (req, res) =>{
             })
         }
     })
+    .catch(err=>{
+        res.status(200).json({
+            message:'somthing went wrong!',
+            status: false
+        });
+    });
 });

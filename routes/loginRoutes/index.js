@@ -23,7 +23,13 @@ module.exports = router.post('/api/login', validateEmailAndPass, generateRandomT
                             accessToken,                        
                         },
                     })
-                });        
+                })
+                .catch(err=>{
+                    res.status(200).json({
+                        message:'somthing went wrong!',
+                        status: false
+                    });
+                });;        
             }else{
                 res.status(200).json({
                     status:false,

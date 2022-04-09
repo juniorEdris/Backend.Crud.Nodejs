@@ -17,7 +17,13 @@ module.exports = router.get('/api/get-single-product/:_id', async (req, res) =>{
             res.status(200).json({
                 message:'somthing went wrong!',
                 status: false
-            })
+            });
         }
     })
+    .catch(err=>{
+        res.status(200).json({
+            message:'somthing went wrong!',
+            status: false
+        });
+    });
 });

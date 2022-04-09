@@ -20,4 +20,10 @@ module.exports = router.delete('/api/delete-multiple-products', async (req, res)
             })
         }
     })
+    .catch(err=>{
+        res.status(200).json({
+            message:'somthing went wrong!',
+            status: false
+        });
+    });
 });

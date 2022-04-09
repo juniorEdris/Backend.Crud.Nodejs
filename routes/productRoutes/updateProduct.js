@@ -21,4 +21,10 @@ module.exports = router.post('/api/update-single-product/:_id', async (req, res)
             })
         }
     })
+    .catch(error=>{
+        res.status(200).json({
+            message:'somthing went wrong!',
+            status: false
+        })
+    });
 });
