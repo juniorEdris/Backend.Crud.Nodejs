@@ -4,7 +4,6 @@ const router = express.Router();
 
 module.exports = router.delete('/api/delete-multiple-products', async (req, res) =>{
     const { ids } = req.body;
-    console.log({ ids, params: req.params });
 
     await Product.deleteMany({_id: { $in: ids}})
     .then(async (data)=>{
