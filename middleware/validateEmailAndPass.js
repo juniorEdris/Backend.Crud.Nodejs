@@ -8,7 +8,7 @@ module.exports = (req,res,next)=>{
     }else{
         if(!email.includes('@') || !email.includes('.com')){
             res.status(200).json({
-                message: 'Provide valid email and password!',
+                message: 'Provide credentials including @ and .com!',
                 status: false
             });
         }else{

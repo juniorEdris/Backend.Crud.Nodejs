@@ -1,6 +1,6 @@
 const { expect } = require("chai");
-const { seedProductForProductCreateTest, UpdateProductTest, deleteProductTest } = require("./CreateProductHelper");
-const { testProductData, testProductforUpdateTestData, testProductforDeleteTestData } = require("./demoData");
+const { seedProductForProductCreateTest, UpdateProductTest, deleteProductTest, deleteMultipleProductsTest } = require("./CreateProductHelper");
+const { testProductData, testProductforUpdateTestData, testProductforDeleteTestData, testProductArrayforDeleteMultipleData } = require("./demoData");
 const { Product } = require("./models");
 
 describe("it should insert/delete/update products", ()=> {
@@ -41,5 +41,14 @@ describe("it should insert/delete/update products", ()=> {
         expect(res.acknowledged).to.be.eq(true);
         expect(res.deletedCount).to.be.a('number');
         expect(res.deletedCount).to.be.eq(1);
+    });
+    
+    it('should delete multiple products', async () => {
+        const res = await deleteMultipleProductsTest(testProductArrayforDeleteMultipleData);
+        expect(res).to.be.an('object');
+        expect(res.acknowledged).to.be.a('boolean');
+        expect(res.acknowledged).to.be.eq(true);
+        expect(res.deletedCount).to.be.a('number');
+        expect(res.deletedCount).to.be.eq(4);
     });
 })

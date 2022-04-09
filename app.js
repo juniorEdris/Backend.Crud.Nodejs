@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const { urlencoded } = require('body-parser');
 
 dotenv.config();
 
@@ -28,7 +29,7 @@ const getAllProductRoute = require('./routes/productRoutes/getAllProducts');
 const updateSingleProductRoute = require('./routes/productRoutes/updateProduct');
 const deleteSingleProductRoute = require('./routes/productRoutes/deleteProduct');
 const deleteMultipleProductRoute = require('./routes/productRoutes/deleteMultipleProduct');
-const { urlencoded } = require('body-parser');
+const logOutRoutes = require('./routes/logOutRoutes');
 
 // Allow cross-origin request
 app.use(cors());
@@ -48,12 +49,10 @@ app.use('/', getSingleProductRoute);
 app.use('/', updateSingleProductRoute);
 app.use('/', deleteSingleProductRoute);
 app.use('/', deleteMultipleProductRoute);
+app.use('/', logOutRoutes);
 
 app.listen(PORT,()=>{
     console.log(`Server started at localhost:${PORT}`);
-    if(process.env.NODE_ENV === 'test'){
-        console.log(`Connected to testcase database name = ${process.env.MONGO_TEST_DATABASE_NAME}.`);
-    };
 });
 
 module.exports = app;

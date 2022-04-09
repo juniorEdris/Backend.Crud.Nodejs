@@ -22,3 +22,33 @@ exports.testProductforDeleteTestData = {
     available_from: "2022-01-12",
     category_id: "624dd7b9b37d439070b548b4"
 }
+exports.testProductArrayforDeleteMultipleData = [
+    {
+        name: `test-product-1`,
+        status: "inactive",
+        price: "0.75",
+        available_from: "2022-01-12",
+        category_id: "624dd7b9b37d439070b548b4"
+    },
+    {
+        name: `test-product-2`,
+        status: "active",
+        price: "0.75",
+        available_from: "2022-01-12",
+        category_id: "624dd7b9b37d439070b548b4"
+    },
+    {
+        name: `test-product-3`,
+        status: "inactive",
+        price: "0.75",
+        available_from: "2022-01-12",
+        category_id: "624dd7b9b37d439070b548b4"
+    },
+    {
+        name: `test-product-4`,
+        status: "active",
+        price: "0.75",
+        available_from: "2022-01-12",
+        category_id: "624dd7b9b37d439070b548b4"
+    },
+];

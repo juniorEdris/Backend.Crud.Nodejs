@@ -14,3 +14,9 @@ exports.seedUserForUserCreateTest = async (data) => {
     const userInfo = await seedUser(data);
     return userInfo
 };
+
+exports.seedUserForLoginTest = async (data) => {
+    await cleanUsers();
+    const userInfo = await seedUser(data);
+    return userInfo
+};
