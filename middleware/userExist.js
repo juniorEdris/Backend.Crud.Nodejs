@@ -4,7 +4,8 @@ module.exports = (req,res,next)=>{
     const { email } = req.body;
     users.find({email})
     .then(data=> {
-        if(data){
+        if(data.length){
+            console.log(data);
             res.status(400).json({ 
                 data: {
                     status:false,
