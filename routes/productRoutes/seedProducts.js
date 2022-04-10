@@ -3,41 +3,41 @@ const Product = require('../../models/product');
 const router = express.Router();
 
 module.exports = router.post('/api/seed-demo-product', async (req, res) =>{
-    const { name, status, price, available_from, category_id } = req.body;
+    const { name, status, price, available_since: available_from, category_id } = req.body;
     demoData = [
         {
             name: `Brush`,
             status: "inactive",
             price: "0.25",
-            available_from: "2022-01-12",
+            available_since: "2022-01-12",
             category_id: "624dd7077474d227dd48ac79"
         },
         {
             name: `stove`,
             status: "active",
             price: "1.75",
-            available_from: "2022-01-12",
+            available_since: "2022-01-12",
             category_id: "624dd7b9b37d439070b548b4"
         },
         {
             name: `Jug`,
             status: "inactive",
             price: "0.75",
-            available_from: "2022-01-12",
+            available_since: "2022-01-12",
             category_id: "624dd7b9b37d439070b548b4"
         },
         {
             name: `Bed`,
             status: "active",
             price: "0.75",
-            available_from: "2022-01-12",
+            available_since: "2022-01-12",
             category_id: "624dd87b7e0f3f827f9193e3"
         },
         {
             name: `Desk`,
             status: "active",
             price: "0.75",
-            available_from: "2022-01-12",
+            available_since: "2022-01-12",
             category_id: "624dd87b7e0f3f827f9193e3"
         }
     ];

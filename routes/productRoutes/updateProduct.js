@@ -6,7 +6,7 @@ module.exports = router.post('/api/update-single-product/:_id', async (req, res)
     const { _id } = req.params;
     const { name,status,price,available_from,category_id } = req.body;
 
-    await Product.updateOne({_id}, { name,status,price,available_from,category_id })
+    await Product.updateOne({_id}, { name,status,price,available_since: available_from,category_id })
     .then(async (data)=>{
         if(data){
             res.status(200).json({

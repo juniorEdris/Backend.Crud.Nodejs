@@ -4,8 +4,9 @@ const router = express.Router();
 
 module.exports = router.post('/api/add-product', async (req, res) =>{
     const { name, status, price, available_from, category_id } = req.body;
+    console.log({available_from});
 
-    await Product.create({name,status,price,available_from,category_id})
+    await Product.create({name,status,price,available_since: available_from,category_id})
     .then(async (data)=>{
         if(data){
             res.status(200).json({
