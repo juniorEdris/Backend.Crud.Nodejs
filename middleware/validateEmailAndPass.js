@@ -1,6 +1,5 @@
 module.exports = (req,res,next)=>{
     const { email, password } = req.body;
-    console.log({ email, password });
     if(!email || !password){
         res.status(200).json({
             message: 'Provide valid email and password!',
