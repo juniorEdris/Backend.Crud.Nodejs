@@ -11,13 +11,11 @@ module.exports = router.post('/api/register', validateEmailAndPass,userExist, ge
 
     await Users.create({email: email.trim() , password: bcrypt.hashSync(password.trim(),10), accessToken})
     .then((data) => {
-        res.status(200).json({ 
-            data: {
+        res.status(200).json({
                 data,
                 status:true,
                 message: 'successful'
-            }
-        });
+            });
     })
     .catch(error => {
         res.status(200).json({ 
