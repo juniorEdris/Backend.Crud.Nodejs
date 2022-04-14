@@ -1,3 +1,4 @@
+const { generateToken } = require("../utils");
 const { User } = require("./models");
 
 
@@ -12,11 +13,29 @@ const seedUser = async (data) => {
 exports.seedUserForUserCreateTest = async (data) => {
     await cleanUsers();
     const userInfo = await seedUser(data);
-    return userInfo
+    const response = {
+        _id: userInfo._id,
+        email: userInfo.email,
+        accessToken: generateToken(userInfo._id, userInfo.email)
+    }
+    return response
+};
+
+exports.seedUserForUserPasswordTest = async (data) => {
+    await cleanUsers();
+    const userInfo = await seedUser(data);
+    
+    return userInfo;
 };
 
 exports.seedUserForLoginTest = async (data) => {
     await cleanUsers();
     const userInfo = await seedUser(data);
-    return userInfo
+
+    const response = {
+            _id: userInfo._id,
+            email: userInfo.email,
+            accessToken: generateToken(userInfo._id, userInfo.email)
+        }
+    return response;
 };

@@ -7,7 +7,6 @@ const router = express.Router();
 
 module.exports = router.post('/api/login', validateEmailAndPass, async (req, res) =>{
     const { email, password } = req.body;
-    console.log({ email, password });
 
     await Users.findOne({email})
     .then(async (user)=>{

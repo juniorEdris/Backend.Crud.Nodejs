@@ -1,6 +1,6 @@
-exports.testUser = {email: "testcasetry@mail.com", password: "123456789", accessToken: "frtehEEdafgebbga74YhrtI"}
-exports.testinvalidemailUser = {email: "testcasetrymail.com", password: "123456789", accessToken: "frtehEEdafgebbga74YhrtI"}
-exports.testinvalidPasswordLengthUser = {email: "testcasetry@mail.media", password: "123456", accessToken: "frtehEEdafgebbga74YhrtI"}
+exports.testUser = {email: "testcasetry@mail.com", password: "123456789" }
+exports.testinvalidemailUser = {email: "testcasetrymail.com", password: "123456789" }
+exports.testinvalidPasswordLengthUser = {email: "testcasetry@mail.media", password: "123456" }
 exports.testProductData = {
     name: `test-product`,
     status: "active",
