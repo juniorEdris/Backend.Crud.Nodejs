@@ -1,44 +1,44 @@
 const express = require('express');
+const authMiddleware = require('../../middleware/authMiddleware');
 const Product = require('../../models/product');
 const router = express.Router();
 
-module.exports = router.post('/api/seed-demo-product', async (req, res) =>{
-    const { name, status, price, available_since: available_from, category_id } = req.body;
+module.exports = router.post('/api/seed-demo-product', authMiddleware, async (req, res) =>{
     demoData = [
         {
-            name: `Brush`,
+            name: `Sink`,
             status: "inactive",
             price: "0.25",
             available_since: "2022-01-12",
-            category_id: "624dd7077474d227dd48ac79"
+            category_id: "625765c907e445766318911b"
         },
         {
-            name: `stove`,
+            name: `Stove`,
             status: "active",
             price: "1.75",
             available_since: "2022-01-12",
-            category_id: "624dd7b9b37d439070b548b4"
+            category_id: "625765c907e445766318911b"
         },
         {
             name: `Jug`,
             status: "inactive",
             price: "0.75",
             available_since: "2022-01-12",
-            category_id: "624dd7b9b37d439070b548b4"
+            category_id: "625765c907e445766318911b"
         },
         {
             name: `Bed`,
             status: "active",
             price: "0.75",
             available_since: "2022-01-12",
-            category_id: "624dd87b7e0f3f827f9193e3"
+            category_id: "625765bf07e4457663189118"
         },
         {
             name: `Desk`,
             status: "active",
             price: "0.75",
             available_since: "2022-01-12",
-            category_id: "624dd87b7e0f3f827f9193e3"
+            category_id: "625765bf07e4457663189118"
         }
     ];
 

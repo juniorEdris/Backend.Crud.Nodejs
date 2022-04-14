@@ -5,11 +5,9 @@ module.exports = (req,res,next)=>{
     users.find({email})
     .then(data=> {
         if(data.length){
-            res.status(200).json({ 
-                data: {
-                    status:false,
-                    message: 'User exist.Try another email!'
-                }
+            res.status(200).json({
+                status:false,
+                message: 'User exist.Try another email!'
             });
         }else{
             next();

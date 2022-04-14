@@ -2,38 +2,30 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const validateEmailAndPass = require('../../middleware/validateEmailAndPass');
 const Users = require('../../models/users');
-const generateRandomToken = require('../../middleware/generateRandomToken');
+const { generateToken } = require('../../utils');
 const router = express.Router();
 
-module.exports = router.post('/api/login', validateEmailAndPass, generateRandomToken, async (req, res) =>{
-    const { email, password, accessToken } = req.body;
+module.exports = router.post('/api/login', validateEmailAndPass, async (req, res) =>{
+    const { email, password } = req.body;
+    console.log({ email, password });
 
     await Users.findOne({email})
     .then(async (user)=>{
         if(user){
             if(bcrypt.compareSync(password, user.password)){
-                // update demo accessToken
-                await Users.updateOne({ email }, { accessToken })
-                .then(data=> {
-                    res.status(200).json({
-                        message: 'user logged in',
-                        status:true,
-                        data: {
-                            email: user.email,
-                            accessToken,                        
-                        },
-                    })
-                })
-                .catch(err=>{
-                    res.status(200).json({
-                        message:'somthing went wrong!',
-                        status: false
-                    });
-                });;        
-            }else{
+                const { _id, email } = user;
+                const accessToken = generateToken(_id, email)
                 res.status(200).json({
+                    _id,
+                    email,
+                    accessToken,
+                    status:true,
+                    message: 'successful'
+                });    
+            }else{
+                res.status(400).json({
                     status:false,
-                    message: 'invalid credentials!'
+                    message: 'Invalid credentials!'
                 })
             }
         }else{

@@ -1,8 +1,9 @@
 const express = require('express');
+const authMiddleware = require('../../middleware/authMiddleware');
 const Product = require('../../models/product');
 const router = express.Router();
 
-module.exports = router.delete('/api/delete-multiple-products', async (req, res) =>{
+module.exports = router.delete('/api/delete-multiple-products', authMiddleware, async (req, res) =>{
     const { ids } = req.body;
 
     await Product.deleteMany({_id: { $in: ids}})

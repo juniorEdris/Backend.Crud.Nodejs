@@ -3,27 +3,29 @@ const bcrypt = require('bcrypt');
 const validateEmailAndPass = require('../../middleware/validateEmailAndPass');
 const Users = require('../../models/users');
 const userExist = require('../../middleware/userExist');
-const generateRandomToken = require('../../middleware/generateRandomToken');
+const { generateToken } = require('../../utils');
 const router = express.Router();
 
-module.exports = router.post('/api/register', validateEmailAndPass,userExist, generateRandomToken, async (req, res) => {
-    const { email, password, accessToken }= req.body;
+module.exports = router.post('/api/register', validateEmailAndPass,userExist, async (req, res) => {
+    const { email, password }= req.body;
 
-    await Users.create({email: email.trim() , password: bcrypt.hashSync(password.trim(),10), accessToken})
+    await Users.create({email: email.trim() , password: bcrypt.hashSync(password.trim(),10)})
     .then((data) => {
+        const { _id, email } = data;
+        const accessToken = generateToken(_id, email)
         res.status(200).json({
-                data,
+                _id,
+                email,
+                accessToken,
                 status:true,
                 message: 'successful'
             });
     })
     .catch(error => {
-        res.status(200).json({ 
-            data: {
-                error,
-                status:false,
-                message: 'failed'
-            }
+        res.status(400).json({
+            error,
+            status:false,
+            message: 'failed'
         });
     })
 });

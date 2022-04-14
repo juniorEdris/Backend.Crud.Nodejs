@@ -1,8 +1,9 @@
 const express = require('express');
+const authMiddleware = require('../../middleware/authMiddleware');
 const Product = require('../../models/product');
 const router = express.Router();
 
-module.exports = router.post('/api/delete-single-product/:_id', async (req, res) =>{
+module.exports = router.post('/api/delete-single-product/:_id', authMiddleware, async (req, res) =>{
     const { _id } = req.params;
 
     await Product.deleteOne({_id})

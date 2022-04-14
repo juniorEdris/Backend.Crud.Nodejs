@@ -1,8 +1,9 @@
 const express = require('express');
+const authMiddleware = require('../../middleware/authMiddleware');
 const Product = require('../../models/product');
 const router = express.Router();
 
-module.exports = router.get('/api/get-all-products', async (req, res) =>{
+module.exports = router.get('/api/get-all-products',authMiddleware, async (req, res) =>{
 
     await Product.find()
     .then(async (data)=>{

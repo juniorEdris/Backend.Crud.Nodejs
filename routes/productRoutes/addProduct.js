@@ -1,8 +1,9 @@
 const express = require('express');
+const authMiddleware = require('../../middleware/authMiddleware');
 const Product = require('../../models/product');
 const router = express.Router();
 
-module.exports = router.post('/api/add-product', async (req, res) =>{
+module.exports = router.post('/api/add-product', authMiddleware, async (req, res) =>{
     const { name, status, price, available_from, category_id } = req.body;
 
     await Product.create({name,status,price,available_since: available_from,category_id})

@@ -7,9 +7,8 @@ module.exports = mongoose.model('User', mongoose.Schema({
     },
     password:  {
         type:String,
-        required: [true, 'Please provide an password']
-    },
-    accessToken: String
+        required: [true, 'Please provide a password']
+    }
 },{
     timestamps: true
 }));

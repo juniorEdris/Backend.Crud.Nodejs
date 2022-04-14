@@ -1,8 +1,9 @@
 const express = require('express');
+const authMiddleware = require('../../middleware/authMiddleware');
 const Category = require('../../models/categories');
 const router = express.Router();
 
-module.exports = router.post('/api/add-category', async (req, res) =>{
+module.exports = router.post('/api/add-category', authMiddleware, async (req, res) =>{
     const { name, active } = req.body;
 
     await Category.create({name,active})

@@ -1,8 +1,9 @@
 const express = require('express');
+const authMiddleware = require('../../middleware/authMiddleware');
 const Category = require('../../models/categories');
 const router = express.Router();
 
-module.exports = router.get('/api/get-category', async (req, res) =>{
+module.exports = router.get('/api/get-category', authMiddleware, async (req, res) =>{
 
     await Category.find()
     .then((data)=>{
